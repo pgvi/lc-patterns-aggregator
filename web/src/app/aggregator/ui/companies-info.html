@@ -1,0 +1,26 @@
+<button
+  class="btn btn-sm btn-ghost"
+  (click)="companies_modal.showModal()"
+  [disabled]="companies().length == 0"
+>
+  {{ companies().length }} companies
+  <svg class="size-5" info-icon />
+</button>
+
+<dialog class="modal" #companies_modal>
+  <div class="modal-box flex flex-col gap-4">
+    @for (c of companiesParsed(); track c.name) {
+      <div class="badge badge-neutral badge-outline dark:badge-info">
+        {{ c.name }}
+      </div>
+    }
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+        ✕
+      </button>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
