@@ -1,0 +1,35 @@
+<div class="flex flex-row flex-wrap gap-4 justify-center">
+  @let s = problemState();
+  @let p = patternState();
+  @let source = sourceState();
+  @if (isLoading()) {
+    <span class="loading loading-ring loading-xl"></span>
+  } @else if (s.data != null) {
+    <app-patterns-frequency [problems]="problemState().data" />
+    <div class="flex flex-col flex-wrap gap-4 w-full">
+      <div class="flex justify-between flex-wrap gap-4 w-full">
+        <app-progress [problems]="problemState()" />
+        <app-filter
+          [filter]="filter()"
+          [patterns]="p.data"
+          [sources]="source.data"
+          [companies]="companyState()"
+          (updateFilterEvent)="updateFilter($event)"
+        />
+      </div>
+
+      <div class="flex flex-wrap self-center gap-4 items-center">
+        <app-search
+          [filter]="filter()"
+          (updateSearchEvent)="updateFilter($event)"
+        />
+        <app-sort
+          [filter]="filter()"
+          (updateSortEvent)="updateFilter($event)"
+        />
+      </div>
+    </div>
+  } @else if (s.error != null) {
+    <div>error</div>
+  }
+</div>
