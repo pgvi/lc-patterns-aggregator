@@ -1,0 +1,10 @@
+<select
+  class="select select-neutral h-full"
+  [ngModel]="source()"
+  (change)="update($any($event.target).value)"
+>
+  <option [selected]="source().length == 0" value="">All sources</option>
+  @for (s of sources(); track s.id) {
+    <option [selected]="source() == s.id" [value]="s.id">{{ s.title }}</option>
+  }
+</select>

@@ -1,0 +1,51 @@
+<div class="text-xl">Filter</div>
+<div class="flex gap-8 flex-wrap">
+  <div class="flex flex-col w-64 justify-between gap-4">
+    <app-difficulty-filter
+      class="h-14"
+      [filter]="filter()"
+      (updateDifficultyEvent)="updateDifficultyEvent($event)"
+    />
+    <app-done-filter
+      class="h-14"
+      [filter]="filter()"
+      (updateDoneEvent)="updateDoneEvent($event)"
+    />
+    <app-review-filter
+      class="h-14"
+      [filter]="filter()"
+      (updateReviewEvent)="updateReviewEvent($event)"
+    />
+  </div>
+  <div class="flex flex-col w-52 justify-between">
+    <app-sources-filter
+      class="h-14"
+      [sources]="sources()"
+      [filter]="filter()"
+      (updateSourceEvent)="updateSource($event)"
+    />
+    <app-companies-filter
+      class="h-14"
+      [companies]="companies().data"
+      [filter]="filter()"
+      (updateCompanyEvent)="updateCompany($event)"
+    />
+    <app-patterns-filter
+      class="h-14"
+      [patterns]="patterns()"
+      [filter]="filter()"
+      (updatePatternEvent)="updatePatternEvent($event)"
+    />
+  </div>
+</div>
+
+<div class="flex py-4 justify-end gap-2">
+  <div>Hide Patterns</div>
+  <input
+    type="checkbox"
+    checked="checked"
+    class="toggle"
+    [checked]="filter().hidePatterns"
+    (change)="toggleHidePattern()"
+  />
+</div>

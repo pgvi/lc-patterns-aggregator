@@ -1,0 +1,12 @@
+<select
+  class="select select-neutral h-full"
+  [ngModel]="company()"
+  (change)="update($any($event.target).value)"
+>
+  <option [selected]="company().length == 0" value="">All companies</option>
+  @for (c of companies(); track $index) {
+    <option [selected]="company() == c" [value]="c">
+      {{ c }}
+    </option>
+  }
+</select>

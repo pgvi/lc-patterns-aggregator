@@ -1,0 +1,12 @@
+<select
+  class="select select-neutral h-full"
+  [ngModel]="pattern()"
+  (change)="update($any($event.target).value)"
+>
+  <option [selected]="pattern().length == 0" value="">All patterns</option>
+  @for (p of patterns(); track $index) {
+    <option [selected]="pattern() == p" [value]="p">
+      {{ p }}
+    </option>
+  }
+</select>

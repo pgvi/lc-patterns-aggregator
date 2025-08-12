@@ -1,0 +1,52 @@
+<div class="text-xl">Progress</div>
+@let p = progression();
+<div class="flex flex-col gap-2">
+  <div>
+    <div class="flex justify-between">
+      <div>Easy</div>
+      <div>{{ progression().easyDone }} / {{ progression().easyTotal }}</div>
+    </div>
+    <progress
+      class="progress progress-success w-56 h-4"
+      [value]="p.easyDone"
+      [max]="p.easyTotal"
+    ></progress>
+  </div>
+
+  <div>
+    <div class="flex justify-between">
+      <div>Medium</div>
+      <div>
+        {{ progression().mediumDone }} / {{ progression().mediumTotal }}
+      </div>
+    </div>
+    <progress
+      class="progress progress-warning w-56 h-4"
+      [value]="p.mediumDone"
+      [max]="p.mediumTotal"
+    ></progress>
+  </div>
+
+  <div>
+    <div class="flex justify-between">
+      <div>Hard</div>
+      <div>{{ progression().hardDone }} / {{ progression().hardTotal }}</div>
+    </div>
+    <progress
+      class="progress progress-error w-56 h-4"
+      [value]="p.hardDone"
+      [max]="p.hardTotal"
+    ></progress>
+  </div>
+  <div>
+    <div class="flex justify-between">
+      <div>Total</div>
+      <div>{{ progression().done }} / {{ progression().total }}</div>
+    </div>
+    <progress
+      class="progress w-56 h-4"
+      [value]="p.done"
+      [max]="p.total"
+    ></progress>
+  </div>
+</div>

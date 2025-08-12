@@ -1,0 +1,16 @@
+<div class="text-xl">Patterns frequency</div>
+<div class="flex flex-wrap gap-2">
+  @for (freqEntry of frequency(); track freqEntry[0]) {
+    <div
+      class="badge"
+      [ngClass]="{
+        'badge-outline': freqEntry[1] >= 1 && freqEntry[1] < 10,
+        'badge-success': freqEntry[1] >= 10 && freqEntry[1] < 20,
+        'badge-warning': freqEntry[1] >= 20 && freqEntry[1] < 30,
+        'badge-error': freqEntry[1] >= 30,
+      }"
+    >
+      {{ freqEntry[0] }} {{ freqEntry[1] }}
+    </div>
+  }
+</div>

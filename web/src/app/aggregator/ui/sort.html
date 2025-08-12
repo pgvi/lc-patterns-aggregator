@@ -1,0 +1,21 @@
+<div class="flex gap-2 items-center">
+  <div class="whitespace-nowrap">Sort by:</div>
+  <select
+    class="select select-neutral h-full"
+    [ngModel]="sortOption()"
+    (change)="updateOption($any($event.target).value)"
+  >
+    @for (o of options; track $index) {
+      <option [selected]="sortOption.toString() == o" [value]="o">
+        {{ o }}
+      </option>
+    }
+  </select>
+  <button class="btn btn-ghost" (click)="toggleDirection()">
+    @if (sortDirection() == direction.ASC) {
+      <svg class="size-4 dark:text-white" asc-icon />
+    } @else {
+      <svg class="size-4 dark:text-white" desc-icon />
+    }
+  </button>
+</div>

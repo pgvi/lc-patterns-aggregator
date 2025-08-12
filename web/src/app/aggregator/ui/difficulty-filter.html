@@ -1,0 +1,32 @@
+<div class="flex items-center">
+  <div class="w-32">Difficulty</div>
+  <div class="flex justify-between items-center w-full">
+    <div class="flex flex-col items-center">
+      <div>Easy</div>
+      <input
+        type="checkbox"
+        [checked]="difficulty().has('Easy')"
+        (change)="update('Easy')"
+        class="checkbox checkbox-success"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      <div>Medium</div>
+      <input
+        type="checkbox"
+        [checked]="difficulty().has('Medium')"
+        (change)="update('Medium')"
+        class="checkbox checkbox-warning"
+      />
+    </div>
+    <div class="flex flex-col items-center">
+      <div>Hard</div>
+      <input
+        type="checkbox"
+        [checked]="difficulty().has('Hard')"
+        (change)="update('Hard')"
+        class="checkbox checkbox-error"
+      />
+    </div>
+  </div>
+</div>
