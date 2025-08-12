@@ -1,0 +1,27 @@
+<button class="btn btn-sm btn-ghost" (click)="sources_modal.showModal()">
+  {{ sourceIds().length }} sources
+  <svg class="size-5" info-icon />
+</button>
+<dialog class="modal" #sources_modal>
+  <div class="modal-box flex flex-col gap-4">
+    @for (source of sources(); track source.id) {
+      <a
+        class="flex flex-wrap items-center gap-0.5"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="{{ source.url }}"
+      >
+        <span class="line-clamp-2">{{ source.title }}</span>
+        <svg class="size-4" link-icon />
+      </a>
+    }
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+        ✕
+      </button>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
