@@ -1,0 +1,30 @@
+<div
+  class="flex flex-row flex-wrap gap-4 max-w-screen-xl justify-between"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollUpDistance]="1.5"
+  [infiniteScrollThrottle]="0"
+  (scrolled)="increasePageNumber()"
+>
+  @let s = problemState();
+  @let sources = sourcesState();
+  @if (isLoading()) {
+    <span class="loading loading-bars loading-xl m-auto"></span>
+  } @else if (s.data && sources.data) {
+    @for (
+      problem of s.data.slice(0, pageNumber() * problemsPerPage);
+      track problem.id
+    ) {
+      <app-problem
+        [problem]="problem"
+        [sources]="sources.data"
+        [hidePattern]="hidePattern()"
+        (updateSolutionEvent)="updateSolution($event)"
+      />
+    } @empty {
+      <div>There are no problems with the current filters</div>
+    }
+  } @else if (s.error || sources.error) {
+    <div>error</div>
+  }
+</div>
