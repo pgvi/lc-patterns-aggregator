@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng deploy --base-href \"https://pgvi.github.io/lc-patterns-aggregator/\""
   },
   "prettier": {
     "overrides": [
@@ -31,6 +32,7 @@
     "@angular/router": "^20.1.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/postcss": "^4.1.11",
+    "angular-cli-ghpages": "^2.0.3",
     "dayjs": "^1.11.13",
     "dexie": "^4.0.11",
     "ngx-infinite-scroll": "^20.0.0",

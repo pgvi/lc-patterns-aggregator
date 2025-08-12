@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lc-patterns": {
+    "lc-patterns-aggregator": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,6 +21,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -65,10 +66,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "lc-patterns:build:production"
+              "buildTarget": "lc-patterns-aggregator:build:production"
             },
             "development": {
-              "buildTarget": "lc-patterns:build:development"
+              "buildTarget": "lc-patterns-aggregator:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,6 +89,9 @@
             ],
             "styles": ["src/styles.css"]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
