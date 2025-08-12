@@ -1,0 +1,84 @@
+<div class="card w-96 h-80 bg-base-100 card-border card-md shadow-lg">
+  @let p = problem();
+  <div class="card-body flex flex-col">
+    <h2 class="card-title h-16">
+      <div
+        class="badge"
+        [class]="{
+          'badge-warning': review(),
+          'badge-success': done(),
+          'badge-neutral': true,
+        }"
+      >
+        #{{ p.id.toString().padStart(4, "0") }}
+      </div>
+      <a
+        class="flex flex-wrap items-center gap-0.5"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="{{ p.url }}"
+      >
+        <span class="line-clamp-2">{{ p.title }} </span>
+        @if (p.premium) {
+          <div class="tooltip" data-tip="Leetcode premium">
+            <svg class="size-4 text-yellow-500" lock-icon />
+          </div>
+        }
+        <svg class="size-4" link-icon />
+      </a>
+    </h2>
+
+    <div class="flex justify-between items-center">
+      <div
+        class="badge"
+        [class]="{
+          'badge-success': p.difficulty == 'Easy',
+          'badge-warning': p.difficulty == 'Medium',
+          'badge-error': p.difficulty == 'Hard',
+        }"
+      >
+        {{ p.difficulty }}
+      </div>
+
+      <app-companies-info [companies]="p.companies" />
+      <app-sources-info [sourceIds]="p.lists" [availableSources]="sources()" />
+    </div>
+    <div>
+      @if (!hidePattern()) {
+        <div>Patterns</div>
+        <div class="flex gap-2 flex-wrap">
+          @for (topic of p.topics; track topic) {
+            <div class="badge badge-neutral badge-outline dark:text-white">
+              {{ topic }}
+            </div>
+          }
+        </div>
+      }
+    </div>
+    <div class="flex justify-between mt-auto flex-col">
+      <div class="flex justify-between w-full">
+        <div class="flex flex-col items-center">
+          <div>Review</div>
+          <input
+            type="checkbox"
+            class="checkbox checkbox-warning"
+            (change)="toggleReview()"
+            [checked]="review()"
+          />
+        </div>
+        <div class="flex flex-col items-center">
+          <div>Done</div>
+          <input
+            type="checkbox"
+            class="checkbox checkbox-success"
+            (change)="toggleDone()"
+            [checked]="done()"
+          />
+        </div>
+      </div>
+      <div class="h-4 self-end">
+        {{ done() ? `Last solved on ${lastSolved()}.` : "" }}
+      </div>
+    </div>
+  </div>
+</div>
