@@ -21,3 +21,7 @@ The application uses the dates from the `updatesURL` to determine if a update is
 Filters are stored in LocalStorage, see `filter-service.ts`.
 
 The rest of the data flow that the UI is concerned occurs through the `ProblemsService`, see `problems-service.ts`
+
+## Possible improvements
+
+- Add some form of spaced repetition

@@ -62,3 +62,7 @@ The `PROBLEMS_OUTPUT_PATH ` will contain the main output file, problems from
 the sources with companies that asked them in interviews.
 
 The `DATE_OUTPUT_PATH` will contain the dates file, used by the [web app](https://github.com/pgvi/lc-patterns-aggregator/tree/master/web) to avoid unnecessary updates.
+
+## Improvements
+
+- Add tests besides `loader`
